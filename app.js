@@ -12,5 +12,6 @@ app.listen(port, () => {
 
 app.use((req, res, next) => {
     const forwardedProto = req.headers["X-Forwarded-Proto"] || req.protocol
+    console.log(forwardedProto)
     forwardedProto === 'https' ? next() : res.redirect('https://' + req.headers.host + req.url, 301)
 })
